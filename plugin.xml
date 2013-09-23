@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.polyvi.xface.extension.zbr"
+    version="1.0.0">
+    <name>Zbar</name>
+    <description>xFace Zbar Extension</description>
+    <license>GPL v3</license>
+    <keywords>cordova,xface,zbar</keywords>
+
+    <js-module src="www/zbr.js" name="Zbar">
+        <clobbers target="xFace.Zbar" />
+    </js-module>
+
+	 <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Zbar">
+                <param name="android-package" value="com.polyvi.xface.extension.zbar.XZBarExt"/>
+            </feature>
+        </config-file>
+		<config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.CAMERA" />
+			<uses-permission android:name="android.permission.VIBRATE" />
+			<uses-feature android:name="android.hardware.camera" />
+            <uses-feature android:name="android.hardware.camera.autofocus" />
+        </config-file>
+        <source-file src="src/android/XCameraActivity.java" target-dir="src/com/polyvi/xface/extension/zbar" />
+		<source-file src="src/android/XCameraPreview.java" target-dir="src/com/polyvi/xface/extension/zbar" />
+		<source-file src="src/android/XZBarExt.java" target-dir="src/com/polyvi/xface/extension/zbar" />
+     </platform>
+</plugin>

@@ -1,0 +1,2 @@
+xface-extension-zbar
+==============
