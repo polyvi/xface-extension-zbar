@@ -9,7 +9,7 @@
     <license>GPL v3</license>
     <keywords>cordova,xface,zbar</keywords>
 
-    <js-module src="www/zbr.js" name="Zbar">
+    <js-module src="www/zbar.js" name="Zbar">
         <clobbers target="xFace.Zbar" />
     </js-module>
 
@@ -26,6 +26,7 @@
 			<uses-feature android:name="android.hardware.camera" />
             <uses-feature android:name="android.hardware.camera.autofocus" />
         </config-file>
+		<source-file src="src/android/libs/zbar.jar" target-dir="libs/" />
         <source-file src="src/android/XCameraActivity.java" target-dir="src/com/polyvi/xface/extension/zbar" />
 		<source-file src="src/android/XCameraPreview.java" target-dir="src/com/polyvi/xface/extension/zbar" />
 		<source-file src="src/android/XZBarExt.java" target-dir="src/com/polyvi/xface/extension/zbar" />
