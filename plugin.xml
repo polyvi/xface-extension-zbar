@@ -2,15 +2,15 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.polyvi.xface.extension.zbr"
+    id="com.polyvi.xface.extension.zbar"
     version="1.0.0">
     <name>Zbar</name>
     <description>xFace Zbar Extension</description>
-    <license>GPL v3</license>
+    <license>GPLv3</license>
     <keywords>cordova,xface,zbar</keywords>
 
-    <js-module src="www/zbar.js" name="Zbar">
-        <clobbers target="xFace.Zbar" />
+    <js-module src="www/BarcodeScanner.js" name="Zbar">
+        <clobbers target="xFace.BarcodeScanner" />
     </js-module>
 
 	 <!-- android -->
@@ -31,4 +31,23 @@
 		<source-file src="src/android/XCameraPreview.java" target-dir="src/com/polyvi/xface/extension/zbar" />
 		<source-file src="src/android/XZBarExt.java" target-dir="src/com/polyvi/xface/extension/zbar" />
      </platform>
+     <!-- wp8 -->
+    <platform name="wp8">
+        <config-file target="config.xml" parent="/*">
+            <feature name="BarcodeScanner">
+                <param name="wp-package" value="BarcodeScanner"/>
+            </feature>
+        </config-file>
+
+        <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
+            <Capability Name="ID_CAP_ISV_CAMERA"/>
+        </config-file>
+
+        <source-file src="src/wp/XZBarExt.cs" />
+        <source-file src="src/wp/XBarCodeTask.cs" />
+        <source-file src="src/wp/XBarCode.cs" />
+        <source-file src="src/wp/XBarCode.xaml" />
+        <source-file src="src/wp/XPhotoCameraLuminanceSource.cs" />
+        <source-file src="src/wp/Silverlight_ZXing_Core.dll" />
+    </platform>
 </plugin>
