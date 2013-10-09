@@ -50,4 +50,44 @@
         <source-file src="src/wp/XPhotoCameraLuminanceSource.cs" />
         <source-file src="src/wp/Silverlight_ZXing_Core.dll" />
     </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="BarcodeScanner">
+                <param name="ios-package" value="XZBarExt" />
+            </feature>
+        </config-file>
+
+        <framework src="QuartzCore.framework" />
+        <framework src="libiconv.dylib" />
+        <framework src="ImageIO.framework" />
+        <framework src="CoreVideo.framework" />
+
+        <header-file src="src/ios/XZBarExt.h" />
+        <source-file src="src/ios/XZBarExt.m" />
+        <header-file src="src/ios/XZBarExt_Privates.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarCameraSimulator.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarCaptureReader.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarHelpController.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarImage.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarImageScanner.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarReaderController.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarReaderView.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarReaderViewController.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarSDK.h" />
+        <header-file src="src/ios/ZBarSDK/ZBarSymbol.h" />
+        <source-file framework="true" src="src/ios/ZBarSDK/libzbar.a" />
+        <header-file src="src/ios/ZBarSDK/zbar.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/Decoder.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/Exception.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/Image.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/ImageScanner.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/Processor.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/Scanner.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/Symbol.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/Video.h" />
+        <header-file src="src/ios/ZBarSDK/zbar/Window.h" />
+    </platform>
+
 </plugin>
