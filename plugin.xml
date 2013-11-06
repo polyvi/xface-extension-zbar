@@ -16,7 +16,7 @@
 	 <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Zbar">
+            <feature name="BarcodeScanner">
                 <param name="android-package" value="com.polyvi.xface.extension.zbar.XZBarExt"/>
             </feature>
         </config-file>
