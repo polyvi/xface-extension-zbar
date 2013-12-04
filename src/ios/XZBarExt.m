@@ -21,8 +21,10 @@
 
 #import "XZBarExt.h"
 #import "XZBarExt_Privates.h"
+
 #import <Cordova/CDVInvokedUrlCommand.h>
 #import <Cordova/CDVPluginResult.h>
+#import <Cordova/CDVDebug.h>
 
 @implementation XZBarExt
 
@@ -43,7 +45,7 @@
     bool hasCamera = [UIImagePickerController isSourceTypeAvailable:sourceType];
     if (!hasCamera)
     {
-        XLogE(@"BarcodeScanner can't work !! no camera available");
+        ALog(@"BarcodeScanner can't work !! no camera available");
 
         CDVCommandStatus status =  CDVCommandStatus_ERROR;
         CDVPluginResult *result = [CDVPluginResult resultWithStatus:status messageAsString: @"no camera available"];
