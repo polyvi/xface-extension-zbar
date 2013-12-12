@@ -20,11 +20,11 @@
 */
 describe("BarcodeScanner", function () {
 
-    it("should exist", function() {
+    it("barcodescanner.spec.1 should exist", function() {
         expect(xFace.BarcodeScanner).toBeDefined();
     });
 
-    it("should contain a start function", function() {
+    it("barcodescanner.spec.2 should contain a start function", function() {
         expect(xFace.BarcodeScanner.start).toBeDefined();
         expect(typeof xFace.BarcodeScanner.start == 'function').toBe(true);
     });
