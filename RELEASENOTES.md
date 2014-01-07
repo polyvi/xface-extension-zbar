@@ -21,3 +21,5 @@
 -->
 
 # Release Notes
+### 1.0.0 Tue Jan 07 2014 16:09:22 GMT+0800 (CST)
+ *  added jasmine tests unique id
