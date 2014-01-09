@@ -1,4 +1,29 @@
+
+/*
+ Copyright 2012-2013, Polyvi Inc. (http://polyvi.github.io/openxface)
+ This program is distributed under the terms of the GNU General Public License.
+
+ This file is part of xFace.
+
+ xFace is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ xFace is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with xFace.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package com.polyvi.xface.extension.zbar;
+
+import java.io.UnsupportedEncodingException;
+
+import com.polyvi.xface.util.XLog;
 
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
@@ -15,12 +40,15 @@ import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.util.Log;
-import android.view.View;
 import android.widget.LinearLayout;
 
+/*
+ * 通过activity启动摄像机，返回preview 图片，scanner（so库）对preview 图片进行分析，
+ * 如果发现条形码就返回分析结果，扫描结果通过intent将返回。
+ */
 public class XCameraActivity extends Activity {
-	private static final String CLASS_NAME = XCameraActivity.class.getSimpleName();
+    private static final String CLASS_NAME = XCameraActivity.class
+            .getSimpleName();
     private static final long VIBRATE_DURATION = 200L;
 
     private Camera mCamera;
@@ -43,7 +71,7 @@ public class XCameraActivity extends Activity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
             mCamera = getCameraInstance();
-            if(null == mCamera) {
+            if (null == mCamera) {
                 Intent intent = new Intent();
                 setResult(RESULT_CANCELED, intent);
                 finish();
@@ -62,7 +90,7 @@ public class XCameraActivity extends Activity {
             mPreviewing = true;
             mCamera.autoFocus(autoFocusCB);
         } catch (Exception e) {
-            Log.e(CLASS_NAME, "Error in onCreate:" + e.getMessage());
+            XLog.e(CLASS_NAME, "Error in onCreate:" + e.getMessage());
         }
     }
 
@@ -74,11 +102,11 @@ public class XCameraActivity extends Activity {
     /** A safe way to get an instance of the Camera object. */
     private Camera getCameraInstance() {
         Camera c = null;
-        //TODO:api level 9可选择摄像头，比如前置摄像头
+        // TODO:api level 9可选择摄像头，比如前置摄像头
         try {
             c = Camera.open();
         } catch (Exception e) {
-            Log.e(CLASS_NAME, "open camera fail");
+            XLog.e(CLASS_NAME, "open camera fail");
         }
         return c;
     }
@@ -98,7 +126,8 @@ public class XCameraActivity extends Activity {
                 try {
                     mCamera.autoFocus(autoFocusCB);
                 } catch (Exception e) {
-                   Log.e(CLASS_NAME, "Error when running autoFocusCB"+ e.getMessage());
+                    XLog.e(CLASS_NAME,
+                            "Error when running autoFocusCB" + e.getMessage());
                 }
             }
         }
@@ -124,11 +153,19 @@ public class XCameraActivity extends Activity {
                 playVibrate();// 振动代表成功获取二维码
 
                 for (Symbol sym : syms) {
-                    // 将扫描后的信息返回
-                    Intent intent = new Intent();
-                    intent.putExtra("Code", sym.getData());
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    try {
+                        byte[] b = sym.getDataBytes();
+                        if (b[0] == -24) {
+                            b = sym.getData().getBytes("sjis");
+                        }
+                        String str = new String(b);
+                        Intent intent = new Intent();
+                        intent.putExtra("Code", str);
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

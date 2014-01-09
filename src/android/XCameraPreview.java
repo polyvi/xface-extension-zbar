@@ -1,18 +1,41 @@
+
+/*
+ Copyright 2012-2013, Polyvi Inc. (http://polyvi.github.io/openxface)
+ This program is distributed under the terms of the GNU General Public License.
+
+ This file is part of xFace.
+
+ xFace is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ xFace is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with xFace.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package com.polyvi.xface.extension.zbar;
 
 import java.io.IOException;
+
+import com.polyvi.xface.util.XLog;
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PreviewCallback;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 public class XCameraPreview extends SurfaceView implements SurfaceHolder.Callback {
-	private final static String CLASS_NAME = XCameraPreview.class.getSimpleName();
+
+    private final static String CLASS_NAME = XCameraPreview.class.getSimpleName();
 
     private SurfaceHolder mHolder;
     private Camera mCamera;
@@ -42,7 +65,7 @@ public class XCameraPreview extends SurfaceView implements SurfaceHolder.Callbac
         try {
             mCamera.setPreviewDisplay(holder);
         } catch (IOException e) {
-            Log.e(CLASS_NAME, "Error setting camera preview: " + e.getMessage());
+            XLog.e(CLASS_NAME, "Error setting camera preview: " + e.getMessage());
         }
     }
 
@@ -80,7 +103,7 @@ public class XCameraPreview extends SurfaceView implements SurfaceHolder.Callbac
             mCamera.startPreview();
             mCamera.autoFocus(mAutoFocusCallback);
         } catch (Exception e){
-            Log.e(CLASS_NAME, "Error starting camera preview: " + e.getMessage());
+            XLog.e(CLASS_NAME, "Error starting camera preview: " + e.getMessage());
         }
     }
 }
