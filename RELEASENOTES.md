@@ -23,3 +23,7 @@
 # Release Notes
 ### 1.0.0 Tue Jan 07 2014 16:09:22 GMT+0800 (CST)
  *  added jasmine tests unique id
+### 1.0.1 Mon Jan 27 2014 15:56:48 GMT+0800 (CST)
+ *  batch modify .reviewboard
+ *  [android][Sync xFace3.1]Fix zbarExt scan Chinese QR code generate Chinese garbled
+ *  Incremented plugin version on dev branch to 1.0.1-dev
