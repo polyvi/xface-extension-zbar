@@ -35,6 +35,11 @@
         <source-file src="src/android/XCameraActivity.java" target-dir="src/com/polyvi/xface/extension/zbar" />
 		<source-file src="src/android/XCameraPreview.java" target-dir="src/com/polyvi/xface/extension/zbar" />
 		<source-file src="src/android/XZBarExt.java" target-dir="src/com/polyvi/xface/extension/zbar" />
+        <proguard-config>
+-keepclasseswithmembers class net.sourceforge.zbar.*{
+*;
+}
+        </proguard-config>
      </platform>
      <!-- wp8 -->
     <platform name="wp8">
