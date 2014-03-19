@@ -34,3 +34,12 @@
  *  issue 1 Updated libzarjin.so, amended the Chinese garbled error.bug reason:Zbar does not support GB18030
  *  [Android]Add proguard config in plugin.xml
  *  Incremented plugin version on dev branch to 1.0.2-dev
+
+
+## 1.0.3 (Wed Mar 19 2014)
+
+
+ *  Updated version and RELEASENOTES.md for release 1.0.2
+ *  issue 1 Updated libzarjin.so, amended the Chinese garbled error.bug reason:Zbar does not support GB18030
+ *  [Android]Add proguard config in plugin.xml
+ *  Incremented plugin version on dev branch to 1.0.2-dev
