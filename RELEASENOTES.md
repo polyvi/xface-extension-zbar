@@ -27,3 +27,10 @@
  *  batch modify .reviewboard
  *  [android][Sync xFace3.1]Fix zbarExt scan Chinese QR code generate Chinese garbled
  *  Incremented plugin version on dev branch to 1.0.1-dev
+
+## 1.0.2 (Wed Mar 19 2014)
+
+
+ *  issue 1 Updated libzarjin.so, amended the Chinese garbled error.bug reason:Zbar does not support GB18030
+ *  [Android]Add proguard config in plugin.xml
+ *  Incremented plugin version on dev branch to 1.0.2-dev
